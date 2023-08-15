@@ -141,15 +141,31 @@ const people = [{
 
 
 let hoursLeft = 12
+let hunter = null
 
+
+function selectHunter() {
+    let randomNumber = Math.floor(Math.random() * people.length)
+    hunter = people[randomNumber].name
+    console.log(hunter)
+}
 
 function attack(location) {
     console.log(location)
     let foundPeople = people.filter((person) => person.location == location)
+    console.log(foundPeople)
+    foundPeople.map((person) => {
+        if (person.name == hunter) {
+            hoursLeft = 1
+            hasWon()
+        }
+    })
+
     foundPeople.map((person) => person.picture = '🦇')
     movePeople()
     draw()
 }
+
 
 function movePeople() {
     people.forEach((person) => {
@@ -161,7 +177,7 @@ function movePeople() {
 
 function hasWon() {
     let won = true
-    hoursLeft--
+    hoursLeft = hoursLeft - 1;
 
     for (let i = 0; i < people.length; i++) {
         if (people[i].picture != '🦇') {
@@ -170,7 +186,7 @@ function hasWon() {
     }
     if (won == true) {
         window.alert("YOU WIN")
-    } else if (hoursLeft == 0) {
+    } else if (hoursLeft <= 0) {
         window.alert("YOU LOSE!")
     }
 }
@@ -182,9 +198,9 @@ function draw() {
         let pTag = document.getElementById(location)
         pTag.innerText = emojiPeople.join(' ')
     })
-    hasWon()
 }
 
+selectHunter()
 draw()
 
 

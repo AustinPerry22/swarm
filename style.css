@@ -1,3 +1,6 @@
-h1 {
-    background-color: blue;
+header h2,
+footer h2 {
+    color: rgb(175, 20, 20);
+    font-family: 'Fira Sans', sans-serif;
+    font-family: 'Rubik Wet Paint', cursive;
 }
