@@ -91,11 +91,56 @@ const people = [{
     name: 'Elf',
     picture: '🧝‍♀️',
     location: '🏟',
+},
+{
+    name: 'Teller',
+    picture: '👨‍💼',
+    location: '🏛',
+},
+{
+    name: 'Superwoman',
+    picture: '🦸‍♀️',
+    location: '🏛',
+},
+{
+    name: 'witch',
+    picture: '🧙‍♀️',
+    location: '🏛',
+},
+{
+    name: 'Mildred',
+    picture: '👵',
+    location: '🏠',
+},
+{
+    name: 'Frank',
+    picture: '🧓',
+    location: '🏠',
+},
+{
+    name: 'small child',
+    picture: '👶',
+    location: '🏠',
+},
+{
+    name: 'Joe',
+    picture: '👨‍🌾',
+    location: '🏣',
+},
+{
+    name: 'Ben',
+    picture: '👩‍💻',
+    location: '🏣',
+},
+{
+    name: 'Angela',
+    picture: '👼',
+    location: '🏣',
 }
 ]
 
 
-let hoursLeft = 6
+let hoursLeft = 12
 
 
 function attack(location) {
