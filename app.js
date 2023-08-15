@@ -1,5 +1,5 @@
 const locations = [
-    '🏤', '🏥', '🏭', '🏢', '🏣'
+    '🏤', '🏥', '🏭', '🏢', '🏣', '🏠', '🏛', '🏟', '🏰'
 ]
 
 const people = [{
@@ -61,6 +61,36 @@ const people = [{
     name: 'Jeremy',
     picture: '🦹',
     location: '🏢',
+},
+{
+    name: 'Santa',
+    picture: '🎅',
+    location: '🏰',
+},
+{
+    name: 'Jester',
+    picture: '🤹‍♂️',
+    location: '🏰',
+},
+{
+    name: 'Paul Blart',
+    picture: '👮‍♂️',
+    location: '🏟',
+},
+{
+    name: 'Gandalf',
+    picture: '🧙‍♂️',
+    location: '🏰',
+},
+{
+    name: 'Ned',
+    picture: '🏄‍♂️',
+    location: '🏟',
+},
+{
+    name: 'Elf',
+    picture: '🧝‍♀️',
+    location: '🏟',
 }
 ]
 
@@ -74,7 +104,6 @@ function attack(location) {
     foundPeople.map((person) => person.picture = '🦇')
     movePeople()
     draw()
-    hoursLeft--
 }
 
 function movePeople() {
@@ -87,6 +116,8 @@ function movePeople() {
 
 function hasWon() {
     let won = true
+    hoursLeft--
+
     for (let i = 0; i < people.length; i++) {
         if (people[i].picture != '🦇') {
             won = false
@@ -94,6 +125,8 @@ function hasWon() {
     }
     if (won == true) {
         window.alert("YOU WIN")
+    } else if (hoursLeft == 0) {
+        window.alert("YOU LOSE!")
     }
 }
 
