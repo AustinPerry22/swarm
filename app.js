@@ -142,30 +142,58 @@ const people = [{
 
 let hoursLeft = 12
 let hunter = null
+let allBats = false
 
 
 function selectHunter() {
     let randomNumber = Math.floor(Math.random() * people.length)
     hunter = people[randomNumber].name
-    console.log(hunter)
+
+    let hunterId = document.getElementById('hunterId')
+    console.log(hunterId)
+    hunterId.innerText = 'BEWARE: The Hunter is near' + people[randomNumber].picture
+}
+
+function isBats() {
+    // change allBats to true if everyone but the hunter are bats
+    let totalBats = 0
+    let totalPeople = people.length
+
+    people.forEach((person) => {
+        if (person.name != hunter) {
+            if (person.picture == '🦇') {
+                totalBats += 1;
+                console.log(totalBats)
+                console.log(people.length)
+            }
+        }
+    })
+    if (totalBats == people.length - 1) {
+        allBats = true
+    }
+
 }
 
 function attack(location) {
-    console.log(location)
     let foundPeople = people.filter((person) => person.location == location)
-    console.log(foundPeople)
     foundPeople.map((person) => {
         if (person.name == hunter) {
-            hoursLeft = 1
-            hasWon()
+            // if there are ppl left that aren't bats
+            isBats()
+            if (allBats == false) {
+                hoursLeft = 1
+                hasWon()
+            } else {
+                hasWon()
+            }
         }
     })
-
-    foundPeople.map((person) => person.picture = '🦇')
-    movePeople()
-    draw()
+    if (hoursLeft > 0) {
+        foundPeople.map((person) => person.picture = '🦇')
+        movePeople()
+        draw()
+    }
 }
-
 
 function movePeople() {
     people.forEach((person) => {
@@ -180,7 +208,7 @@ function hasWon() {
     hoursLeft = hoursLeft - 1;
 
     for (let i = 0; i < people.length; i++) {
-        if (people[i].picture != '🦇') {
+        if (people[i].picture != '🦇' && people[i].name != hunter) {
             won = false
         }
     }
