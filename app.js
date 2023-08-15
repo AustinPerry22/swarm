@@ -182,15 +182,13 @@ function attack(location) {
             isBats()
             if (allBats == false) {
                 hoursLeft = 1
-                hasWon()
-            } else {
-                hasWon()
             }
         }
     })
     if (hoursLeft > 0) {
         foundPeople.map((person) => person.picture = '🦇')
         movePeople()
+        hasWon()
         draw()
     }
 }
@@ -225,6 +223,10 @@ function draw() {
         let emojiPeople = filteredPeople.map((person) => person.picture)
         let pTag = document.getElementById(location)
         pTag.innerText = emojiPeople.join(' ')
+
+        let turns = document.getElementById('Turns')
+        turns.innerText = hoursLeft.toString()
+
     })
 }
 
